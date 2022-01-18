@@ -63,8 +63,8 @@ def calculate(template: dict, values: dict) -> dict:
     return res
 
 
-def readhtml(html_tmpl: str) -> str:
-    with open(html_tmpl, 'r', encoding='utf8') as f:
+def readhtml(html_tmplate: str) -> str:
+    with open(html_tmplate, 'r', encoding='utf8') as f:
         html = f.read()
     return html
 
@@ -96,6 +96,13 @@ def html_final(txt_file: str, inidata: dict, html_template: str) -> None:
     html_file = txt_file.replace('.txt', '.html')
     vals, _ = parsetxt2dict(txt_file)
     results = calculate(inidata, vals)
+    html = html_template.format(**dict2gr(results))
+    with open(html_file, 'w', encoding='utf8') as f:
+        f.write(html)
+
+
+def html_final_plain(data: dict, inidata: dict, html_template: str, html_file: str) -> None:
+    results = calculate(inidata, data)
     html = html_template.format(**dict2gr(results))
     with open(html_file, 'w', encoding='utf8') as f:
         f.write(html)
