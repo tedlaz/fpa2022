@@ -18,14 +18,13 @@ def run():
     )
 
     args = parser.parse_args()
-    pistotiko = 0
-    if args.credit:
-        pistotiko = float(args.credit)
-    isozygio_file = args.isofile
-    data = dict_for_fpa(isozygio_file, 'accfpa.txt', pistotiko)
 
-    html_file = isozygio_file.replace('.txt', '.html')
-    html_final_plain(data, PARAMS, F2_HTML, html_file)
+    pistotiko = float(args.credit) if args.credit else 0.0
+    isozygio_file_path = args.isofile
+    data = dict_for_fpa(isozygio_file_path, 'accfpa.txt', pistotiko)
+
+    html_file_path = isozygio_file_path.replace('.txt', '.html')
+    html_final_plain(data, PARAMS, F2_HTML, html_file_path)
 
 
 if __name__ == "__main__":

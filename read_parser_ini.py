@@ -17,7 +17,7 @@ def split_line_data(text: str) -> slice:
     return slice(int(apo) - 1, int(eos) - 1)
 
 
-def read_ini(config_file: str = 'parser.ini') -> PData:
+def read_ini(config_file: str = 'fpa.ini') -> PData:
     config = ConfigParser()
     config.read(config_file, encoding='utf8')
 
